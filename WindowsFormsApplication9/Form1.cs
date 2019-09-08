@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -203,7 +203,7 @@ namespace WindowsFormsApplication9
             switch (e.KeyCode.ToString())
             {
                 case "Right":
-                    pacman.BackgroundImage = Properties.Resources.Pacman as Bitmap;
+                    pacman.BackgroundImage = Pacman.Properties.Resources.Pacman as Bitmap;
                     if (pacman.Location.X >= 15 && pacman.Location.X <= 60 && pacman.Location.Y >= 405 && pacman.Location.Y < 435)
                     {
                         break;
@@ -213,14 +213,14 @@ namespace WindowsFormsApplication9
                         {
                             break;
                         }
-                    else
+                    else 
                         if (pacman.Location.X < 530 - sizem)
                         {
                             pacman.Location = new Point(pacman.Location.X + sizem, pacman.Location.Y);
                         }
                     break;
                 case "Left":
-                    pacman.BackgroundImage = Properties.Resources.PacmanL as Bitmap;
+                    pacman.BackgroundImage = Pacman.Properties.Resources.PacmanL as Bitmap;
                     if (pacman.Location.X >= 15 && pacman.Location.X < 460 && pacman.Location.Y >= 405 && pacman.Location.Y < 435)
                     {
                         break;
@@ -237,7 +237,7 @@ namespace WindowsFormsApplication9
                         }
                     break;
                 case "Up":
-                    pacman.BackgroundImage = Properties.Resources.PacmanU as Bitmap;
+                    pacman.BackgroundImage = Pacman.Properties.Resources.PacmanU as Bitmap;
                     if (pacman.Location.X >= 45 && pacman.Location.X <= 430 && pacman.Location.Y >= 405 && pacman.Location.Y <= 465)
                     {
                         break;
@@ -254,7 +254,7 @@ namespace WindowsFormsApplication9
                         }
                     break;
                 case "Down":
-                    pacman.BackgroundImage = Properties.Resources.PacmanD as Bitmap;
+                    pacman.BackgroundImage = Pacman.Properties.Resources.PacmanD as Bitmap;
                     if (pacman.Location.X >= 45 && pacman.Location.X <= 430 && pacman.Location.Y >= 375 && pacman.Location.Y <= 435)
                     {
                         break;
