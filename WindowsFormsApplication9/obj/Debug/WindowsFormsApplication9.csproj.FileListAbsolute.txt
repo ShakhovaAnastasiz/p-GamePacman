@@ -7,8 +7,6 @@ D:\vistud\WindowsFormsApplication9\WindowsFormsApplication9\bin\Debug\WindowsFor
 D:\vistud\WindowsFormsApplication9\WindowsFormsApplication9\obj\Debug\WindowsFormsApplication9.exe
 D:\vistud\WindowsFormsApplication9\WindowsFormsApplication9\obj\Debug\WindowsFormsApplication9.pdb
 D:\vistud\WindowsFormsApplication9\WindowsFormsApplication9\obj\Debug\WindowsFormsApplication9.csprojResolveAssemblyReference.cache
-D:\WindowsFormsApplication9\WindowsFormsApplication9\obj\Debug\WindowsFormsApplication9.csprojResolveAssemblyReference.cache
-D:\WindowsFormsApplication9\WindowsFormsApplication9\obj\Debug\WindowsFormsApplication9.Form1.resources
 D:\WindowsFormsApplication9\WindowsFormsApplication9\obj\Debug\WindowsFormsApplication9.csproj.GenerateResource.Cache
 D:\WindowsFormsApplication9\WindowsFormsApplication9\bin\Debug\Pacman.exe.config
 D:\WindowsFormsApplication9\WindowsFormsApplication9\obj\Debug\Pacman.Properties.Resources.resources
@@ -16,3 +14,4 @@ D:\WindowsFormsApplication9\WindowsFormsApplication9\bin\Debug\Pacman.exe
 D:\WindowsFormsApplication9\WindowsFormsApplication9\bin\Debug\Pacman.pdb
 D:\WindowsFormsApplication9\WindowsFormsApplication9\obj\Debug\Pacman.exe
 D:\WindowsFormsApplication9\WindowsFormsApplication9\obj\Debug\Pacman.pdb
+D:\WindowsFormsApplication9\WindowsFormsApplication9\obj\Debug\Pacman.PacmanForm.resources
