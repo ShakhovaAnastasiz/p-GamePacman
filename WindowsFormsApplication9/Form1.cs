@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
-using System.Threading.Tasks;
 
 
 namespace WindowsFormsApplication9
@@ -24,7 +23,6 @@ namespace WindowsFormsApplication9
 
         public Form1()
         {
-
             InitializeComponent();
             this.Width = width;
             this.Height = height;
@@ -35,21 +33,20 @@ namespace WindowsFormsApplication9
 
             x.Enabled = true;
 
-            x.Interval = 2000;
+            x.Interval = 2000; //timer
             x.Start();
 
-            Thread myThreadboo1 = new Thread(new ThreadStart(x_Tick));
+            Thread myThreadboo1 = new Thread(new ThreadStart(Boo1)); //another thread for ghost1
             myThreadboo1.Start();
-            Thread myThreadboo2 = new Thread(new ThreadStart(Boo2));
+            Thread myThreadboo2 = new Thread(new ThreadStart(Boo2)); //another thread for ghost2
             myThreadboo2.Start();
         }
 
-
-        private void x_Tick()
+        //****method for creating ghost1********
+        private void Boo1()
         {
 
             boo1.Location = new Point(500, 15);
-
             while (pacman.Location.X != boo1.Location.X && pacman.Location.Y != boo1.Location.Y)
             {
                 boo1.BackColor = Color.Black;
@@ -57,20 +54,17 @@ namespace WindowsFormsApplication9
                 boo1.Location = new Point(520, 15);
                 for (int i = 1; i < 15; i++)
                 {
-
                     boo1.Location = new Point(boo1.Location.X - 30, boo1.Location.Y);
                     Thread.Sleep(500);
-
                 }
                 for (int i = 1; i < 15; i++)
                 {
-
                     boo1.Location = new Point(boo1.Location.X + 30, boo1.Location.Y);
                     Thread.Sleep(500);
                 }
             }
         }
-        //  boo1.Dispose();
+        //****method for creating ghost2********
         private void Boo2()
         {
             boo.Location = new Point(75, 360);
@@ -82,49 +76,37 @@ namespace WindowsFormsApplication9
 
                 for (int i = 1; i < 12; i++)
                 {
-
                     boo.Location = new Point(boo.Location.X + 30, boo.Location.Y);
                     Thread.Sleep(500);
-
                 }
                 for (int i = 1; i < 7; i++)
                 {
-
                     boo.Location = new Point(boo.Location.X, boo.Location.Y - 30);
                     Thread.Sleep(500);
-
                 }
                 for (int i = 1; i < 7; i++)
                 {
-
                     boo.Location = new Point(boo.Location.X, boo.Location.Y + 30);
                     Thread.Sleep(500);
-
                 }
                 for (int i = 1; i < 12; i++)
                 {
-
                     boo.Location = new Point(boo.Location.X - 30, boo.Location.Y);
                     Thread.Sleep(500);
                 }
                 for (int i = 1; i < 5; i++)
                 {
-
                     boo.Location = new Point(boo.Location.X, boo.Location.Y - 30);
                     Thread.Sleep(500);
-
                 }
                 for (int i = 1; i < 5; i++)
                 {
-
                     boo.Location = new Point(boo.Location.X, boo.Location.Y + 30);
                     Thread.Sleep(500);
-
                 }
             }
-
         }
-
+        //****Exit for pacmen. Game over. Pacmen winner****
         private void GameOver()
         {
             if (pacman.Location.X + sizem > 500 && pacman.Location.Y + sizem > 530)
@@ -134,35 +116,28 @@ namespace WindowsFormsApplication9
 
             }
         }
-
+        //****Game over. Pacmen bumped into the ghost********
         private void Boo1Clash()
         {
-
             if (boo1.Location.X <= pacman.Location.X && boo1.Location.Y <= pacman.Location.Y && boo1.Location.X + 40 >= pacman.Location.X + sizem && boo1.Location.Y + 40 >= pacman.Location.Y + sizem)
             {
                 MessageBox.Show("You are loser. Score:" + Score);
                 this.Close();
             }
-
-
         }
         private void Boo2Clash()
         {
-
             if (boo.Location.X <= pacman.Location.X && boo.Location.Y <= pacman.Location.Y && boo.Location.X + 40 >= pacman.Location.X + sizem && boo.Location.Y + 40 >= pacman.Location.Y + sizem)
             {
                 MessageBox.Show("You are loser. Score:" + Score);
                 this.Close();
             }
-
-
         }
-
+        //**** pacmen pick up coins for Score******
         private void Clash()
         {
             foreach (System.Windows.Forms.PictureBox i in Dots.ToArray())
             {
-
                 if (i.Location.X >= pacman.Location.X && i.Location.Y >= pacman.Location.Y && i.Location.X <= pacman.Location.X + sizem && i.Location.Y <= pacman.Location.Y + sizem)
                 {
                     Dots.Remove(i);
@@ -171,9 +146,8 @@ namespace WindowsFormsApplication9
                     lblScore.Text = "Score:" + ++Score;
                 }
             }
-
         }
-
+        // ****Coins generation****
         private void Seed()
         {
 
@@ -187,12 +161,10 @@ namespace WindowsFormsApplication9
                     dot.Location = new Point(sizem * i, sizem * j);
                     this.Controls.Add(dot);
                     Dots.Add(dot);
-
-
                 }
             }
-
         }
+        //*****Map generation******
         private void Map()
         {
 
@@ -221,20 +193,13 @@ namespace WindowsFormsApplication9
             barrier2.Location = new Point(45, 405);
             this.Controls.Add(barrier2);
 
-   
-
             exit.Size = new Size(60, 30);
             exit.Location = new Point(500, 530);
-            // exit.BackColor = Color.Black;
             this.Controls.Add(exit);
-
-
-
         }
-
+        //***Pacman movement*****
         private void Motion(Object sender, KeyEventArgs e)
         {
-
             switch (e.KeyCode.ToString())
             {
                 case "Right":
@@ -248,7 +213,8 @@ namespace WindowsFormsApplication9
                         {
                             break;
                         }
-                        else if (pacman.Location.X < 530 - sizem)
+                    else
+                        if (pacman.Location.X < 530 - sizem)
                         {
                             pacman.Location = new Point(pacman.Location.X + sizem, pacman.Location.Y);
                         }
@@ -264,11 +230,11 @@ namespace WindowsFormsApplication9
                         {
                             break;
                         }
-                        else
-                            if (pacman.Location.X > sizem)
-                            {
-                                pacman.Location = new Point(pacman.Location.X - sizem, pacman.Location.Y);
-                            }
+                    else
+                       if (pacman.Location.X > sizem)
+                        {
+                            pacman.Location = new Point(pacman.Location.X - sizem, pacman.Location.Y);
+                        }
                     break;
                 case "Up":
                     pacman.BackgroundImage = Properties.Resources.PacmanU as Bitmap;
@@ -281,11 +247,11 @@ namespace WindowsFormsApplication9
                         {
                             break;
                         }
-                        else
-                            if (pacman.Location.Y > sizem)
-                            {
-                                pacman.Location = new Point(pacman.Location.X, pacman.Location.Y - sizem);
-                            }
+                    else
+                        if (pacman.Location.Y > sizem)
+                        {
+                            pacman.Location = new Point(pacman.Location.X, pacman.Location.Y - sizem);
+                        }
                     break;
                 case "Down":
                     pacman.BackgroundImage = Properties.Resources.PacmanD as Bitmap;
@@ -299,21 +265,17 @@ namespace WindowsFormsApplication9
                             break;
                         }
 
-                        else
-                            if (pacman.Location.Y < 530 - sizem)
-                            {
-                                pacman.Location = new Point(pacman.Location.X, pacman.Location.Y + sizem);
-                            }
+                    else
+                        if (pacman.Location.Y < 530 - sizem)
+                        {
+                            pacman.Location = new Point(pacman.Location.X, pacman.Location.Y + sizem);
+                        }
                     break;
-
-
             }
             Clash();
             GameOver();
             Boo2Clash();
             Boo1Clash();
-
         }
-
     }
 }
